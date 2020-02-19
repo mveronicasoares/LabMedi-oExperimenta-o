@@ -1,7 +1,7 @@
 import requests
 import json
 
-headers = {"Authorization": "token d9eff5073950ceffc4ff93f1a49666b780fcba73"}
+headers = {"Authorization": "Bearer YOUR API KEY"}
 
 
 def run_query(query): #Função para usar request.post
@@ -15,7 +15,7 @@ def run_query(query): #Função para usar request.post
 query = """
 {
   search (query:"stars:>100",
-  				type: REPOSITORY, first:1) {
+  				type: REPOSITORY, first:100) {
     	nodes {
         ... on Repository {
           nameWithOwner
@@ -43,5 +43,3 @@ query = """
 """
 result = run_query(query)
 print (result)
-#parsed = json.loads(result)
-#print (json.dumps(parsed, ident=4))
